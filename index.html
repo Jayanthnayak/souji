@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2025</title>
+    <style>
+       body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+background: linear-gradient(135deg, #00ffcc, #3333ff);
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease-in-out;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            animation: fadeIn 3s ease-in-out;
+            opacity: 0;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .video-container {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out;
+            animation-delay: 3s;
+            animation-fill-mode: forwards;
+        }
+
+        /* Hover Effect */
+        .video-container:hover {
+            transform: scale(1.05);
+        }
+
+        .video-container:hover .overlay {
+            opacity: 0.3;
+        }
+
+        /* Media Queries for Small Screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            p {
+                font-size: 1.2rem;
+            }
+            .video-container {
+                width: 90%;
+                max-width: 100%;
+                aspect-ratio: 16 / 9;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .video-container {
+                width: 100%;
+                max-width: 100%;
+                aspect-ratio: 16 / 9;
+            }
+        }
+
+        /* Confetti animation */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0;
+            animation: confettiAnimation 4s ease-out forwards;
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff7e5f;
+            opacity: 0.9;
+            animation: fall 2s infinite;
+            border-radius: 50%;
+        }
+
+        @keyframes confettiAnimation {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(100px);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(200px);
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy New Year 2025! 🎉</h1>
+    <p>This is for my blood friend. In history you are my Friend, In geography you are my World, In Biology you are my Heart, In chemistry you are my Oxygen, In physics you are my Gravity, In Maths you are my Solution, In philosophy you are my Truth, In poetry you are my Rhymes</p>
+
+    <div class="video-container">
+        <video id="myVideo" preload="auto" autoplay loop>
+            <source src="assets/video/happy_new_year.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    <footer>Made with ❤️ for my best friend</footer>
+
+    <!-- Confetti Animation -->
+    <div id="confetti" class="confetti"></div>
+
+    <script>
+        // Wait for the video to start playing and trigger confetti animation
+        window.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('myVideo');
+            const confettiContainer = document.getElementById('confetti');
+
+            // Ensure the video plays without sound vibrations
+            video.volume = 1; // Set to full volume to avoid low volume issues
+            video.muted = false; // Ensure it's not muted
+            video.play().then(() => {
+                console.log("Video started with sound!");
+
+                // Trigger the confetti animation
+                confettiContainer.style.opacity = 1;
+
+                // Generate random confetti
+                for (let i = 0; i < 100; i++) {
+                    const confettiPiece = document.createElement('div');
+                    confettiPiece.style.left = `${Math.random() * 100}vw`;
+                    confettiPiece.style.animationDelay = `${Math.random() * 2}s`;
+                    confettiPiece.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                    confettiContainer.appendChild(confettiPiece);
+                }
+            }).catch((error) => {
+                console.error("Error starting video:", error);
+            });
+        });
+    </script>
+</body>
+</html>
